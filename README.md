@@ -1,6 +1,6 @@
 # Quasar Desktop App Template (quasar-electron-template)
 
-A Quasar Project
+A Quasar Project to be used in Electron applications with frameless titlebar.
 
 ## Install the dependencies
 ```bash

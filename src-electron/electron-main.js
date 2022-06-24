@@ -1,6 +1,7 @@
-import { app, BrowserWindow, nativeTheme } from 'electron'
+import { app, BrowserWindow, ipcMain, nativeTheme } from 'electron'
 import path from 'path'
 import os from 'os'
+import winState from 'src-electron/modules/winState'
 
 // needed in case process is undefined under Linux
 const platform = process.platform || os.platform()
@@ -45,24 +46,7 @@ function createWindow () {
 
 
   //* --------------------- WINDOW CONTROL --------------------- */
-  mainWindow.on('closed', () => {
-    mainWindow = null
-  })
-  mainWindow.on("move", () => {
-		mainWindow.webContents.send("winState", "normal")
-	})
-	mainWindow.on("minimize", () => {
-		mainWindow.webContents.send("winState", "minimized")
-	})
-	mainWindow.on("maximize", () => {
-		mainWindow.webContents.send("winState", "maximized")
-	})
-	mainWindow.on("unmaximize", () => {
-		mainWindow.webContents.send("winState", "normal")
-	})
-	mainWindow.on("restore", () => {
-		mainWindow.webContents.send("winState", "normal")
-	})
+  winState.init()
 
 
 

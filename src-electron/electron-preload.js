@@ -15,24 +15,60 @@
  *     doAThing: () => {}
  *   })
  */
- import { contextBridge, ipcRenderer } from "electron"
-//_  import { BrowserWindow } from "@electron/remote"
+import { contextBridge, ipcRenderer } from "electron"
+import winState from 'src-electron/modules/winState'
 
- const validChannels = ["winState"]
 
- contextBridge.exposeInMainWorld("csxAPI", {
-	envMode: process.env.MODE,
-	minimize() {
-		BrowserWindow.getFocusedWindow().minimize()
+const validChannels = ["winState"]
+
+contextBridge.exposeInMainWorld("ipc", {
+	send: (channel, data) => {
+		if (validChannels.includes(channel)) {
+			ipcRenderer.send(channel, data)
+		}
 	},
-	maximize() {
-		BrowserWindow.getFocusedWindow().maximize()
-	},
-	restore() {
-		BrowserWindow.getFocusedWindow().unmaximize()
-	},
-	close() {
-		BrowserWindow.getFocusedWindow().close()
-		BrowserWindow.getFocusedWindow().destroy()
+	on: (channel, func) => {
+		if (validChannels.includes(channel)) {
+			// Strip event as it includes `sender` and is a security risk
+			ipcRenderer.on(channel, (...args) => func(...args))
+		}
 	},
 })
+
+contextBridge.exposeInMainWorld('api',
+  {
+    envMode: process.env.MODE,
+    winState: { ...winState.api },
+  }
+)
+
+//  contextBridge.exposeInMainWorld("ipc", {
+//    send: (channel, data) => {
+//      if (validChannels.includes(channel)) {
+//        ipcRenderer.send(channel, data);
+//      }
+//    },
+//    on: (channel, func) => {
+//      if (validChannels.includes(channel)) {
+//        // Strip event as it includes `sender` and is a security risk
+//        ipcRenderer.on(channel, (...args) => func(...args));
+//      }
+//    },
+//  })
+
+//  contextBridge.exposeInMainWorld("csxAPI", {
+// 	envMode: process.env.MODE,
+// 	minimize() {
+// 		window.getFocusedWindow().minimize()
+// 	},
+// 	maximize() {
+// 		window.getFocusedWindow().maximize()
+// 	},
+// 	restore() {
+// 		window.getFocusedWindow().unmaximize()
+// 	},
+// 	close() {
+// 		window.getFocusedWindow().close()
+// 		window.getFocusedWindow().destroy()
+// 	},
+// })

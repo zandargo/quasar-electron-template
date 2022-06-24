@@ -10,13 +10,13 @@
 			</q-avatar>
 
 			<q-space />
-			<div><h4>CadSichter</h4></div>
+			<div><h4>Electron App</h4></div>
 			<q-space />
 
 			<q-btn
 				unelevated
 				class="win-btn q-ma-none cursor-inherit q-pt-md"
-				@click="winMinimize"
+				@click="winState('minimize')"
 			>
 				<q-avatar square size="16px">
 					<img
@@ -31,7 +31,7 @@
 				size="md"
 				class="win-btn q-ma-none cursor-inherit"
 				v-if="status === 'normal'"
-				@click="winMaximize"
+				@click="winState('maximize')"
 			>
 				<q-avatar square size="16px">
 					<img src="../assets/img/titlebar/icon_maximize.svg" />
@@ -42,8 +42,8 @@
 				unelevated
 				size="md"
 				class="win-btn q-ma-none cursor-inherit"
-				v-if="status === 'maximized'"
-				@click="winRestore"
+				v-if="status === 'maximized' || status === 'minimized'"
+				@click="winState('restore')"
 			>
 				<q-avatar square size="16px">
 					<img src="../assets/img/titlebar/icon_restore.svg" />
@@ -55,7 +55,7 @@
 				flat
 				size="md"
 				class="win-btn win-btn-close q-ma-none cursor-inherit"
-				@click="winClose"
+				@click="winState('close')"
 			>
 				<q-avatar square size="16px">
 					<img src="../assets/img/titlebar/icon_close.svg" />
@@ -66,9 +66,29 @@
 </template>
 
 <script setup>
-// import { computed } from "vue"
+import { ref, computed, onMounted } from "vue"
+
+const status = ref('normal')
+
+//* ---------- CONTROL WINDOW STATE USING BUTTONS ---------- *//
+const winState = (state) => {
+  if (window.api.envMode === "electron") {
+    window.ipc.send('winState', state)
+  }
+}
+
+//* ------------------ ON MOUNTED CONTEXT ------------------ *//
+onMounted(() => {
+
+  //> Needed to react to state change other than button click
+  window.ipc.on("winState", (event, msg) => {
+    status.value = msg
+  })
+
+})
 
 </script>
+
 
 <style lang="scss" scoped>
 .win-btn {
