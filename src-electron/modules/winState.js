@@ -52,15 +52,6 @@ function start (args) {
 
   //> Do stuff with current window
 
-
-  // const winMinimize = () => win.minimize()
-	// const winMaximize = () => win.maximize()
-	// const winRestore = () => win.unmaximize()
-	// const winClose = () => {
-	// 	win.close()
-	// 	win.destroy()
-	// }
-
 }
 
 //* ------------------------- EXPORTS ------------------------ */

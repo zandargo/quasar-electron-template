@@ -42,33 +42,3 @@ contextBridge.exposeInMainWorld('api',
   }
 )
 
-//  contextBridge.exposeInMainWorld("ipc", {
-//    send: (channel, data) => {
-//      if (validChannels.includes(channel)) {
-//        ipcRenderer.send(channel, data);
-//      }
-//    },
-//    on: (channel, func) => {
-//      if (validChannels.includes(channel)) {
-//        // Strip event as it includes `sender` and is a security risk
-//        ipcRenderer.on(channel, (...args) => func(...args));
-//      }
-//    },
-//  })
-
-//  contextBridge.exposeInMainWorld("csxAPI", {
-// 	envMode: process.env.MODE,
-// 	minimize() {
-// 		window.getFocusedWindow().minimize()
-// 	},
-// 	maximize() {
-// 		window.getFocusedWindow().maximize()
-// 	},
-// 	restore() {
-// 		window.getFocusedWindow().unmaximize()
-// 	},
-// 	close() {
-// 		window.getFocusedWindow().close()
-// 		window.getFocusedWindow().destroy()
-// 	},
-// })
