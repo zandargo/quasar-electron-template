@@ -1,7 +1,7 @@
 /**
  * This file is used specifically for security reasons.
  * Here you can access Nodejs stuff and inject functionality into
- * the renderer thread (accessible there through the "window" object)
+ * the renderer thread (accessible there through the 'window' object)
  *
  * WARNING!
  * If you import anything from node_modules, then make sure that the package is specified
@@ -15,13 +15,13 @@
  *     doAThing: () => {}
  *   })
  */
-import { contextBridge, ipcRenderer } from "electron"
+import { contextBridge, ipcRenderer } from 'electron'
 import winState from 'src-electron/modules/winState'
 
 
-const validChannels = ["winState"]
+const validChannels = ['winState']
 
-contextBridge.exposeInMainWorld("ipc", {
+contextBridge.exposeInMainWorld('ipc', {
 	send: (channel, data) => {
 		if (validChannels.includes(channel)) {
 			ipcRenderer.send(channel, data)
