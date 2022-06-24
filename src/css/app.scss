@@ -1,0 +1,65 @@
+// app global css in SCSS form
+
+#titlebar {
+  z-index: 9999;
+}
+
+
+.bg-l1 {
+	background-color: $color-l1 !important;
+}
+.bg-l2 {
+	background-color: $color-l2 !important;
+}
+.bg-l3 {
+	background-color: $color-l3 !important;
+}
+.bg-l4 {
+	background-color: $color-l4 !important;
+}
+.bg-l5 {
+	background-color: $color-l5 !important;
+}
+
+.bg-d1 {
+	background-color: $color-d1 !important;
+}
+.bg-d2 {
+	background-color: $color-d2 !important;
+}
+.bg-d3 {
+	background-color: $color-d3 !important;
+}
+.bg-d4 {
+	background-color: $color-d4 !important;
+}
+.bg-d5 {
+	background-color: $color-d5 !important;
+}
+
+.bg-hl-1 {
+	background-color: $color-l3-hl1 !important;
+}
+.bg-hl-2 {
+	background-color: $color-l2-hl1 !important;
+}
+
+.txt-d1 {
+	color: $color-d1 !important;
+}
+.txt-d2 {
+	color: $color-d2 !important;
+}
+.txt-d3 {
+	color: $color-d3 !important;
+}
+.txt-d4 {
+	color: $color-d4 !important;
+}
+.txt-d5 {
+	color: $color-d5 !important;
+}
+
+.cs-border {
+	border: 1px solid transparentize($primary, 0.4);
+}
