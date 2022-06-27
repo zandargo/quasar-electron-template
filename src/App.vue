@@ -12,6 +12,9 @@
 </script>
 
 <style lang="scss">
+  // * {
+  //   cursor: crosshair !important;
+  // }
   #appTitlebar {
 
     background: navy;

@@ -1,4 +1,21 @@
 // app global css in SCSS form
+@font-face {
+	font-family: "RobotoCondensed";
+	src: url("fonts/RobotoCondensed-Regular.ttf") format("truetype");
+}
+
+* {
+	font-family: "RobotoCondensed", Arial, Helvetica, sans-serif;
+	// font-size: 12pt;	//! CAUSA ERRO NO Q-TOGGLE
+	// line-height: 14pt;
+	cursor: default !important;
+	user-select: none;
+	-webkit-user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
 
 #titlebar {
   z-index: 9999;
@@ -62,4 +79,8 @@
 
 .cs-border {
 	border: 1px solid transparentize($primary, 0.4);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-variant-caps: small-caps;
 }
