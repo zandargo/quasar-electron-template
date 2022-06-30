@@ -15,9 +15,9 @@
         class="col-grow q-pl-md"
         :breakpoint="200"
       >
-        <q-tab no-caps name="tab1" label="Tab 01" />
-        <q-tab no-caps name="tab2" label="Tab 2" />
-        <q-tab no-caps name="tab3" label="Tab 3" />
+        <q-tab no-caps name="tab1" label="Tab 1" @click="storeMain.setTab('tab1')" />
+        <q-tab no-caps name="tab2" label="Tab 2" @click="storeMain.setTab('tab2')"/>
+        <q-tab no-caps name="tab3" label="Tab 3" @click="storeMain.setTab('tab3')"/>
         <div :v-if="$q.screen.xs" class="col-1"></div>
       </q-tabs>
   </div>
@@ -26,8 +26,12 @@
 <script setup>
 
 import { ref } from 'vue'
+import { useDefStore } from 'src/stores/mainStore'
 
+const storeMain = useDefStore()
 const tab = ref('tab1')
+
+
 
 </script>
 

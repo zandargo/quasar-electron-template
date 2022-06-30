@@ -3,22 +3,14 @@
 </template>
 
 <script setup>
-// import { defineComponent } from 'vue'
+import { useDefStore } from 'src/stores/mainStore'
 
+const storeMain = useDefStore()
 
-// export default defineComponent({
-//   name: 'App'
-// })
 </script>
 
 <style lang="scss">
-  // * {
-  //   cursor: crosshair !important;
-  // }
   #appTitlebar {
-
     background: navy;
   }
-
-
 </style>

@@ -52,6 +52,10 @@ $color-d5: darken($primary, 45%);
 $color-l3-hl1: lighten($primary, 32%);
 $color-l2-hl1: lighten($primary, 25%);
 
+$shadow1: 5px 5px 10px transparentize($primary, 0.75);
+$shadow2: 5px 5px 10px transparentize($color_d4, 0.5);
+$shadowscroll: 0px 0px 5px transparentize($primary, 0.75);
+
 //* ------------------------------- HEADINGS ------------------------------- *//
 $h1: (
 	size: 2rem,

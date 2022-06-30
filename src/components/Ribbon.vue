@@ -1,13 +1,13 @@
 <template>
   <div style="height: 80px">
-    <p>Ribbons here</p>
+    <p>Testando: {{ storeMain.tab }}</p>
   </div>
 </template>
 
 <script setup>
-
+import { useDefStore } from 'src/stores/mainStore'
+const storeMain = useDefStore()
 </script>
 
 <style lang="scss" scoped>
-
 </style>

@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh LpR fFf">
 <!-- //* ------------------------ HEADER ------------------------ *// -->
-    <q-header elevated class="column">
+    <q-header elevated class="column shadow-3">
       <!-- //*  DESKTOP BAR  *// -->
       <TitleBar />
 
@@ -37,7 +37,7 @@
       side="left"
       elevated
       behavior="desktop"
-      class="bg-l5 txt-d5 absolute-left q-pa-md"
+      class="bg-l5 txt-d5 absolute-left q-pa-md shadow-2"
       style="overflow: hidden; min-height: 100%"
     >
     </q-drawer>
